@@ -90,12 +90,14 @@ function updateSchedule() {
     var eventDate = event.getStartTime()
 
     // these four fields form each table line
-    var tableLine = [
-      Utilities.formatDate(eventDate, SCHEDULE_TIME_ZONE, 'd MMM'),
+    var dateLine = ''
+    dateLine = dateLine + Utilities.formatDate(eventDate, SCHEDULE_TIME_ZONE, 'd MMM') + '-'
+    var titleLine [
       Utilities.formatDate(eventDate, SCHEDULE_TIME_ZONE, eventDate.getMinutes() != 0 ? 'h:mma' : 'ha').toLowerCase(),
       event.getTitle(),
       event.getDescription()
     ].join('|') + '\n'
+    var tableLine  = dateLine + titleLine
 
     if (sidebarLength + tableLine.length > LENGTH_LIMIT) {
       break
